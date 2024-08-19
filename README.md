@@ -69,7 +69,13 @@ This is a Vue.js application for performing CRUD (Create, Read, Update, Delete) 
     VITE_FIREBASE_APP_ID=your_firebase_app_id
     VITE_FIREBASE_MEASUREMENT_ID=your_firebase_measurement_id
    ```
-
+5. Requirements to run
+   ```bash
+   npm install vue-router@4
+   npm install bootstrap@5
+   npm install firebase
+   ```
+   
 ## Development
 
 ### Running the Development Server
