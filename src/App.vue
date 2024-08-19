@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <UserCreate v-if="isCreatePage" />
+    <UserUpdate v-if="isUpdatePage" />
+    <UserList v-if="isListPage" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UserCreate from './components/UserCreate.vue';
+import UserList from './components/UserList.vue';
+import UserUpdate from './components/UserUpdate.vue';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    UserCreate,
+    UserList,
+    UserUpdate
+  },
+  setup() {
+    const route = useRoute();
+
+    const isCreatePage = computed(() => route.path === '/');
+    const isUpdatePage = computed(() => route.path.startsWith('/update'));
+    const isListPage = computed(() => route.path === '/');
+
+    return { isCreatePage, isUpdatePage, isListPage };
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Global styles */
 </style>
